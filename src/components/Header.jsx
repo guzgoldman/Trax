@@ -8,7 +8,7 @@ const Header = () => {
         <div className="container container--fluid">
             <header>
                 <div className='nav-pos'>
-                    <Link className='logo' to='/'>Trax</Link>
+                    <Link className='logo' to='/'>Tra <img className='star-logo' src="https://i.ibb.co/dBLXHRj/favicon.png" alt="" /> </Link>
                     <div className="divisor-1"></div>
                     <NavBar/>
                 </div>

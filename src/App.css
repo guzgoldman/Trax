@@ -20,6 +20,10 @@
   color: black;
 }
 
+.star-logo {
+  width: 2.5rem;
+}
+
 .divisor-1 {
   color: white;
   cursor: default;
