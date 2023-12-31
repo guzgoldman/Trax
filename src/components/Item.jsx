@@ -7,7 +7,8 @@ const Item = ({ item }) => (
             <img src={item.img} alt="" />
         </div>
         <span className="product-title">{item.brmod}</span>
-        <Link to={'/item/' + item.id}></Link>
+        <span className="product-price">USD {item.price}</span>
+        <Link to={'/' + item.cat + '/' + item.id}></Link>
     </div>
 );
 

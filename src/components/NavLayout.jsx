@@ -16,21 +16,21 @@ const NavLayout = () => {
             <nav ref={navRef}>
                 <ul>
                     <li>
-                        <Link to='/speakers'>Speakers</Link>
+                        <Link to='/speakers' onClick={showNavbar}>Speakers</Link>
                     </li>
                     <li>
-                        <Link to="/turntables">Turntables</Link>
+                        <Link to="/turntables" onClick={showNavbar}>Turntables</Link>
                     </li>
                     <li>
-                        <Link to="/amps">Amplifiers</Link>
+                        <Link to="/amps" onClick={showNavbar}>Amplifiers</Link>
                     </li>
                     <li>
-                        <Link to='/merch'>Merch</Link>
+                        <Link to='/merch' onClick={showNavbar}>Merch</Link>
                     </li>
                     <li>
                         <button onClick={showNavbar} className="nav-btn nav-close-btn fa-solid fa-xmark"></button>
                     </li>
-                    <Link to='/cart'>
+                    <Link to='/cart' onClick={showNavbar}>
                         <CartWidget/>
                     </Link>
                 </ul>

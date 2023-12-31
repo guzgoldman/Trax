@@ -7,7 +7,7 @@ const CartList = () => {
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row cart-align">
                 <div className="col"></div>
                 <div className="col">Product</div>
                 <div className="col">Quantity</div>
@@ -16,9 +16,9 @@ const CartList = () => {
             </div>
             {cart.map((product) => {
                 return (
-                    <div className="row" key={product.id}>
+                    <div className="row item-align" key={product.id}>
                         <div className="col">
-                            <img src={product.img} alt="" />
+                            <img className="cart-img" src={product.img} alt="" />
                         </div>
                         <div className="col">
                             {product.brmod}
@@ -35,14 +35,14 @@ const CartList = () => {
                     </div>
                 )
             })};
-            <div className="row">
+            <div className="row item-align">
                 <div className="col"></div>
                 <div className="col"></div>
                 <div className="col"></div>
                 <div className="col">
                     Total price of cart is: USD {totalCart}
                 </div>
-                <div className="col">
+                <div className="col cart-button">
                     <button as={Link} to='/checkout'>Proceed to checkout</button>
                     <button onClick={emptyCart}>Empty cart</button>
                 </div>
