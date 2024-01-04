@@ -6,21 +6,18 @@ import { db } from '../firebase'
 import { collection, getDoc, doc } from 'firebase/firestore'
 
 
-const AmpsDetail = () => {
-    const [item, setItem] = useState({})
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+const ItemDetailContainer = () => {
+    const [item, setItem] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { id } = useParams()
     useEffect(() => {
-        const productsCollection = collection(db, "amps")
-        const ref = doc(productsCollection, id)
+        const itemsCollection = collection(db, "items")
+        const ref = doc(itemsCollection, id)
         const fetch = getDoc(ref)
         fetch
             .then((res) => {
-                const item = {
-                    id: res.id, // Agrega el id del documento
-                    ...res.data()
-                }
+                const item = res.data()
                 setItem(item)
                 setLoading(false)
             })
@@ -38,16 +35,18 @@ const AmpsDetail = () => {
                 </div>
             </div>
         )
-    }
+    };
 
     if (error) {
-        return <p>Error: {error.message}</p>;
-    }
-    
+        return (
+            <p>Error: {error.message}</p>
+        )
+    };
+
     return (
         <ItemDetail item={item} />
     )
 
 }
 
-export default AmpsDetail
+export default ItemDetailContainer

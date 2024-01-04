@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 
 const NavLayout = () => {
+    const linkData = [
+        {path: '/category/speakers', name:'Speakers'},
+        {path: '/category/turntables', name:'Turntables'},
+        {path: '/category/amps', name:'Amplifiers'},
+        {path: '/category/merch', name:'Merch'}
+    ]
 
     const navRef = useRef();
 
@@ -15,23 +21,14 @@ const NavLayout = () => {
         <>
             <nav ref={navRef}>
                 <ul>
-                    <li>
-                        <Link to='/speakers' onClick={showNavbar}>Speakers</Link>
-                    </li>
-                    <li>
-                        <Link to="/turntables" onClick={showNavbar}>Turntables</Link>
-                    </li>
-                    <li>
-                        <Link to="/amps" onClick={showNavbar}>Amplifiers</Link>
-                    </li>
-                    <li>
-                        <Link to='/merch' onClick={showNavbar}>Merch</Link>
-                    </li>
-                    <li>
-                        <button onClick={showNavbar} className="nav-btn nav-close-btn fa-solid fa-xmark"></button>
-                    </li>
-                    <Link to='/cart' onClick={showNavbar}>
-                        <CartWidget/>
+                    {linkData.map(({path, name}) => (
+                        <Link to={path} key={name} onClick={showNavbar}>
+                            {name}
+                        </Link>
+                    ))}
+                    <button onClick={showNavbar} className="nav-btn nav-close-btn fa-solid fa-xmark"></button>
+                    <Link className='cart-widget' to='/cart' onClick={showNavbar}>
+                        <CartWidget />
                     </Link>
                 </ul>
             </nav>

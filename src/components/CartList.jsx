@@ -21,7 +21,7 @@ const CartList = () => {
                             <img className="cart-img" src={product.img} alt="" />
                         </div>
                         <div className="col">
-                            {product.brmod}
+                            {product.name}
                         </div>
                         <div className="col">
                             {product.qty}

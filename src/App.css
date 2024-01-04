@@ -27,6 +27,7 @@
 .divisor-1 {
   color: white;
   cursor: default;
+  width: 2rem;
 }
 
 header {
@@ -58,11 +59,11 @@ nav ul {
   display: flex;
 }
 
-nav ul li {
+nav ul a {
   list-style: none;
 }
 
-nav ul li a {
+nav ul a {
   text-decoration: none;
   color: black;
   padding-top: 16px;
@@ -240,7 +241,7 @@ nav ul li a {
     right: 2rem;
   }
 
-  nav ul li a {
+  nav ul a {
     font-size: 1.5rem;
   }
 
@@ -425,8 +426,6 @@ ul {
   font-size: 2rem;
 }
 
-
-
 .stock-button {
   display: flex;
   align-items: center;
@@ -485,4 +484,8 @@ p {
 .cart-button button, .cart-button a {
   width: 8rem;
   margin-right:1rem;
+}
+
+.cart-widget {
+  margin-left: 0;
 }

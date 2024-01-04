@@ -35,10 +35,7 @@ const ItemList = ({ items }) => {
                 </div>
             </div>
         </div>
-
-        // <div className="row">
-
-        // </div>
     )
 }
+
 export default ItemList

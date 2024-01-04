@@ -1,18 +1,24 @@
-import { useCart } from './CartProvider';
-import { useState } from "react";
-import ItemCount from './ItemCount';
+import { useState } from 'react'
+import { useCart } from './CartProvider'
+import ItemCount from './ItemCount'
 
 const ItemDetail = ({ item }) => {
     if (!item) {
-        return <div>Loading...</div>; // o algún otro tipo de indicador de carga
-    }
-    
-    const [confirmed, setConfirmed] = useState(false);
-    const [qty, setQty] = useState(0);
-    const {addProduct} = useCart();
+        return (
+            <div className="cart-empty">
+                <div class="spinner-border text-secondary" style={{width:'6rem', height:'6rem'}} role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+    };
 
-    const onAdd = (p) => {
-        setQty(p)
+    const [confirmed, setConfirmed] = useState(false)
+    const [qty, setQty] = useState(0)
+    const {addProduct} = useCart()
+
+    const onAdd = (param) => {
+        setQty(param)
         setConfirmed(true)
     }
 
@@ -24,20 +30,20 @@ const ItemDetail = ({ item }) => {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img className='product-img' src={item.img} alt="" />
+                    <img src={item.img} alt="" className="product-img" />
                 </div>
                 <div className="product-info col-md-6">
-                    <h1>{item.brmod}</h1>
-                    <p className='product-description'>{item.desc}</p>
+                    <h1>{item.name}</h1>
+                    <p className="product-description">{item.desc}</p>
                     <div className="product-keys">
-                        <span className='price'>USD{item.price}</span>
+                        <span className="price">USD {item.price}</span>
                         <ItemCount stock={item.stock} onAdd={onAdd} />
-                        {confirmed && <button className='product-button' onClick={handleClick}>Add to cart</button>}
+                        {confirmed && <button className="product-button" onClick={handleClick}>Add to cart</button> }
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default ItemDetail
