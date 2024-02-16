@@ -5,10 +5,7 @@ import { useRef } from 'react'
 
 const NavLayout = () => {
     const linkData = [
-        {path: '/category/speakers', name:'Speakers'},
-        {path: '/category/turntables', name:'Turntables'},
-        {path: '/category/amps', name:'Amplifiers'},
-        {path: '/category/merch', name:'Merch'}
+        {path: '/category/programming', name:'Programming books'}
     ]
 
     const navRef = useRef();

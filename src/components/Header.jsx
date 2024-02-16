@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from './NavBar'
+import NavLayout from './NavLayout'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
@@ -7,9 +7,9 @@ const Header = () => {
         <div className="container container--fluid">
             <header>
                 <div className='nav-pos'>
-                    <Link className='logo' to='/'>Tra <img className='star-logo' src="https://i.ibb.co/dBLXHRj/favicon.png" alt="" /> </Link>
-                    <div className="divisor-1"></div>
-                    <NavBar/>
+                    <Link className='logo' to='/'>Vu<img className='star-logo' src="https://i.ibb.co/dBLXHRj/favicon.png" alt="" /> </Link>
+                    {/* <div className="divisor"></div> */}
+                    <NavLayout/>
                 </div>
             </header>
         </div>

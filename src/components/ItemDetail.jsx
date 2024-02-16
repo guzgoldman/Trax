@@ -13,32 +13,26 @@ const ItemDetail = ({ item }) => {
         )
     };
 
-    const [confirmed, setConfirmed] = useState(false)
-    const [qty, setQty] = useState(0)
-    const {addProduct} = useCart()
-
-    const onAdd = (param) => {
-        setQty(param)
-        setConfirmed(true)
-    }
-
-    const handleClick = () => {
-        addProduct(item, qty)
-    };
-
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img src={item.img} alt="" className="product-img" />
+                    <div className="img-box">
+                        <img src={item.img} alt="" className="product-img" />
+                    </div>
                 </div>
                 <div className="product-info col-md-6">
-                    <h1>{item.name}</h1>
-                    <p className="product-description">{item.desc}</p>
+                    <h1>{item.title}</h1>
+                    {/* <p className="product-description">{item.desc}</p> */}
                     <div className="product-keys">
                         <span className="price">USD {item.price}</span>
-                        <ItemCount stock={item.stock} onAdd={onAdd} />
-                        {confirmed && <button className="product-button" onClick={handleClick}>Add to cart</button> }
+                        <ItemCount item={item} stock={item.stock} /> {/* Aquí es donde pasas las props */}
+                    </div>
+                    <div className='units-left'>
+                        <div className='counter'>
+                            {item.stock}
+                        </div>
+                        <span>units left</span>
                     </div>
                 </div>
             </div>

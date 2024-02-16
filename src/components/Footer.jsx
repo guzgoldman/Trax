@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="footer-style container-fluid">
                 <div className="row p-5 pb-2">
                     <div className="footer-div col-xl col-md-12 col-sm-12 col-xl-3 col-lg-12 mb-4 mb-lg-4">
-                        <Link className="logo" to='/'>Tra  <img className='star-logo' src="https://i.ibb.co/dBLXHRj/favicon.png" alt="" /></Link>
+                        <Link className="logo" to='/'>Vu<img className='star-logo' src="https://i.ibb.co/dBLXHRj/favicon.png" alt="" /></Link>
                         <div className="mt-1">
                             <span>Follow us</span>
                                 <div className="d-flex justify-content-start justify-content-md-start mt-1">

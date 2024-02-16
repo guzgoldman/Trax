@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const context = createContext();
 const Provider = context.Provider;
@@ -9,41 +9,51 @@ export const useCart = () => {
 }
 
 const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const localData = localStorage.getItem('cart');
+        return localData ? JSON.parse(localData) : [];
+    });
 
-    const addProduct = (product, qty) => {
-        if(isInCart(product.id)) {
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log("Estado del carrito:", cart);
+    }, [cart]);
+
+    const addProduct = (item, qty) => {
+        const existingProduct = cart.find((x) => x.title === item.title);
+    
+        if (existingProduct) {
             setCart(
-                cart.map((x) => {
-                    return x.id === product.id ? {...x, qty: x.qty + qty} : x
-                })
-            )
+                cart.map((x) =>
+                    x.title === item.title ? { ...x, qty: x.qty + qty } : x
+                )
+            );
         } else {
-            setCart([...cart, {...product, qty: qty}])
+            setCart([...cart, { ...item, qty: qty }]);
         }
     };
-
-    const deleteProduct = (product) => {
-        const newCart = cart.filter((e) => e.product !== product.product);
-        setCart(newCart);
-        return newCart;
+    
+    
+    const deleteProduct = async (itemId) => {
+        const newCart = cart.filter(item => item.id !== itemId);
+        setCart(newCart)
     };
 
     const emptyCart = () => {
         setCart([]);
         totalProduct(0);
-    }
+    };
 
-    const totalCart = cart.reduce((sum, product) => sum + product.price * product.qty, 0).toFixed(2);
+    const totalCart = cart.reduce((sum, item) => sum + item.price * item.qty, 0).toFixed(2);
 
     const isInCart = (id) => {
         cart.find((x) => x.id === id)
     }
 
-    const totalProduct = (product) => {
+    const totalProduct = (item) => {
         let total = 0;
-        cart.forEach(product => {
-            total = total + product.qty
+        cart.forEach(item => {
+            total = total + item.qty
         });
         return total;
     }
